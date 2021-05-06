@@ -25,14 +25,17 @@ class OverviewViewModel : ViewModel() {
 
     init {
         getMarsRealEstateProperties()
+        Log.i("OverviewViewModel","init")
     }
 
     private fun getMarsRealEstateProperties() {
         viewModelScope.launch {
             _status.value = MarsApiStatus.LOADING
+
             try{
                 _property.value = MarsApi.retrofitService.getProperties()
                 _status.value = MarsApiStatus.DONE
+                Log.i("OverviewViewModel",_property.value.toString())
             } catch (e : Exception){
                 Log.i("OverviewViewModel",e.toString())
                 _status.value = MarsApiStatus.ERROR
@@ -41,6 +44,4 @@ class OverviewViewModel : ViewModel() {
             }
         }
     }
-
-
 }
