@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="property"
+            type="com.example.marsrealestate.network.MarsProperty" />
 
     </data>
 
