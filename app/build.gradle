@@ -63,8 +63,8 @@ dependencies {
     implementation "com.squareup.moshi:moshi:1.9.3"
     implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
 
-    // ViewModel and LiveData
-//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    //ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
     // Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"

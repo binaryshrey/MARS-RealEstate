@@ -23,8 +23,8 @@ private val retrofit = Retrofit.Builder()
 
 interface MarsAPIService{
     @GET("realestate")
-    fun properties() :
-            Call<MarsProperty>
+    suspend fun getProperties() :
+            List<MarsProperty>
 }
 
 

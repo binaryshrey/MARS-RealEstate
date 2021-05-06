@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="overviewViewModel"
+            type="com.example.marsrealestate.overview.OverviewViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
