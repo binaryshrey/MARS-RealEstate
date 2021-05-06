@@ -37,12 +37,12 @@
             android:layout_height="wrap_content"
             android:indeterminate="true"
             app:progressStatus="@{overviewViewModel.status}"
-            app:indicatorColor="@color/purple_200"
+            app:indicatorColor="@color/orange_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:trackColor="#FFFFFF" />
+            app:trackColor="@color/white" />
 
 
         <TextView
