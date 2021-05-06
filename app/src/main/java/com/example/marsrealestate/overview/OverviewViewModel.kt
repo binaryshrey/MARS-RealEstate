@@ -34,7 +34,7 @@ class OverviewViewModel : ViewModel() {
         Log.i("OverviewViewModel","init")
     }
 
-    private fun getMarsRealEstateProperties(filter: MarsApiFilter) {
+    fun getMarsRealEstateProperties(filter: MarsApiFilter) {
         viewModelScope.launch {
             _status.value = MarsApiStatus.LOADING
 

@@ -53,6 +53,12 @@ class OverviewFragment : Fragment() {
             }
         })
 
+        binding.onSwipeRefresh.setOnRefreshListener {
+//            Toast.makeText(context,"refreshed",Toast.LENGTH_SHORT).show()
+            viewModel.getMarsRealEstateProperties(MarsApiFilter.SHOW_ALL)
+            binding.onSwipeRefresh.isRefreshing = false
+        }
+
         setHasOptionsMenu(true)
 
         return binding.root
