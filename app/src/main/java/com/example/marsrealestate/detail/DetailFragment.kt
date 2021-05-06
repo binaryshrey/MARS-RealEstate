@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.FloatRange
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.marsrealestate.R
@@ -24,6 +25,7 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity).supportActionBar?.title = "Mars RealEstate"
         val application = requireNotNull(activity).application
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         binding.setLifecycleOwner(this)

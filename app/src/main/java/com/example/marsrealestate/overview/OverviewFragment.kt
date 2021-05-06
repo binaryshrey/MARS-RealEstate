@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,7 +28,7 @@ class OverviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Mars RealEstate"
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_overview, container, false)
         viewModel = ViewModelProvider(this).get(OverviewViewModel::class.java)
 
