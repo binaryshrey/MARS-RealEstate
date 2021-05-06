@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.marsrealestate.databinding.GridItemListViewBinding
 import com.example.marsrealestate.network.MarsProperty
 
-class MarsAdapter : ListAdapter<MarsProperty, MarsAdapter.ViewHolder>(DiffUtilCallback()) {
+class MarsAdapter(val clickListener : ClickListener) : ListAdapter<MarsProperty, MarsAdapter.ViewHolder>(DiffUtilCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarsAdapter.ViewHolder {
@@ -17,12 +17,13 @@ class MarsAdapter : ListAdapter<MarsProperty, MarsAdapter.ViewHolder>(DiffUtilCa
 
     override fun onBindViewHolder(holder: MarsAdapter.ViewHolder, position: Int) {
         val marsProperty = getItem(position)
-        holder.bind(marsProperty)
+        holder.bind(clickListener,marsProperty)
     }
 
     class ViewHolder private constructor(val binding : GridItemListViewBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(marsProperty: MarsProperty){
+        fun bind(clickListener: ClickListener, marsProperty: MarsProperty){
             binding.property = marsProperty
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -46,5 +47,9 @@ class DiffUtilCallback : DiffUtil.ItemCallback<MarsProperty>(){
     }
 
 
+}
+
+class ClickListener(val clickListener: (marsProperty: MarsProperty) -> Unit){
+    fun onClick(marsProperty: MarsProperty) = clickListener(marsProperty)
 }
 
