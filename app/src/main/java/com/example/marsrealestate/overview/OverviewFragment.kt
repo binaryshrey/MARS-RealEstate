@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.marsrealestate.R
 import com.example.marsrealestate.databinding.FragmentOverviewBinding
 
@@ -33,14 +34,23 @@ class OverviewFragment : Fragment() {
         binding.overviewViewModel = viewModel
         binding.setLifecycleOwner(this)
 
-        adapter = MarsAdapter(ClickListener { marProperty ->
-            Toast.makeText(context,"${marProperty.id}",Toast.LENGTH_SHORT).show()
+        adapter = MarsAdapter(ClickListener { marsProperty ->
+            Toast.makeText(context,"${marsProperty.id}",Toast.LENGTH_SHORT).show()
+            viewModel.onSelect(marsProperty)
+
         })
         binding.recyclerView.adapter = adapter
 
         viewModel.property.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it.toMutableList())
+            }
+        })
+
+        viewModel.selectedProperty.observe(viewLifecycleOwner, Observer {
+            if(it !=null){
+                this.findNavController().navigate(OverviewFragmentDirections.actionOverviewFragmentToDetailFragment(it))
+                viewModel.onNavigateComplete()
             }
         })
 

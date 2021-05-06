@@ -22,6 +22,10 @@ class OverviewViewModel : ViewModel() {
     val property : LiveData<List<MarsProperty>>
         get() = _property
 
+    private val _selectedProperty = MutableLiveData<MarsProperty>()
+    val selectedProperty : LiveData<MarsProperty>
+        get() = _selectedProperty
+
 
     init {
         getMarsRealEstateProperties()
@@ -43,5 +47,12 @@ class OverviewViewModel : ViewModel() {
 
             }
         }
+    }
+
+    fun onSelect(marsProperty: MarsProperty){
+        _selectedProperty.value = marsProperty
+    }
+    fun onNavigateComplete(){
+        _selectedProperty.value = null
     }
 }

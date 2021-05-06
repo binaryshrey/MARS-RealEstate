@@ -11,7 +11,7 @@ import com.example.marsrealestate.overview.MarsApiStatus
 
 
 @BindingAdapter("imageUrl")
-fun bind(image : ImageView, imgUrl : String){
+fun bind(image : ImageView, imgUrl : String?){
     imgUrl?.let {
         val imgUri = it.toUri().buildUpon().scheme("https").build()
         Glide.with(image.context)
